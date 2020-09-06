@@ -29,9 +29,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         try {
-            File myObj = new File("input.txt");
+            // read path to the data from stdin
+            Scanner in = new Scanner(System.in);
+            String filePath = in.nextLine();
+
+            // reading data
+            File myObj = new File(filePath);
             Scanner myReader = new Scanner(myObj);
 
             StringBuilder lastWord = new StringBuilder();
@@ -39,7 +43,9 @@ public class Main {
                 String line = myReader.nextLine();
                 for (Character c:line.toCharArray()) {
                     if (Character.isLetter(c)) {
+                        if (lastWord.length() < maxWordLength) {
                             lastWord.append(c);
+                        }
                     } else {
                         if (lastWord.length() != 0) {
                             processNewWord(lastWord.toString());
