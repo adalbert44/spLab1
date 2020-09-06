@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     private static final int maxWordLength = 30; // words greater then this value will be truncated
     private static int max = 0; // maximum count of different letters in the word
-    private static ArrayList<String> maxLettersCountWords = new ArrayList<>(); // array with all words of the length equal to max
+    private static HashSet<String> maxLettersCountWords = new HashSet<>(); // array with all words of the length equal to max
 
     private static void processNewWord(String word) {
         // count the number of different letters
@@ -24,7 +24,7 @@ public class Main {
             maxLettersCountWords.clear();
         }
         if(letters.size() == max) {
-            maxLettersCountWords.add(word);
+            maxLettersCountWords.add(word.toLowerCase());
         }
     }
 
